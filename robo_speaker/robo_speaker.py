@@ -5,7 +5,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 import pyttsx3
 
-load_dotenv(dotenv_path=r"C:\Users\data\OneDrive\Desktop\study\practical world projects\python_projects\api.env")
+load_dotenv(dotenv_path=r"api.env")
 
 llm = ChatGroq(groq_api_key=os.getenv("groq_api_key"),
                model_name="llama-3.1-8b-instant")
@@ -43,4 +43,5 @@ if __name__ == "__main__":
         
         
         
+
         
