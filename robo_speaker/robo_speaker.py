@@ -5,41 +5,43 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 import pyttsx3
 
-load_dotenv(dotenv_path=r"api.env")
 
+load_dotenv(dotenv_path=r"C:\Users\data\OneDrive\Desktop\study\practical world projects\python_projects\robo_speaker\api.env")
+
+# loading model
 llm = ChatGroq(groq_api_key=os.getenv("groq_api_key"),
                model_name="llama-3.1-8b-instant")
 
 prompt = PromptTemplate.from_template(
-    "Answer the given question:{input} polietly and short.")
+    "Answer the given question:{input} politely and short.")
 
 output = StrOutputParser()
+
+# creating chain
 chain = prompt | llm | output
 
 
-if __name__ == "__main__":
-    print("Welcome to ROBO Speaker!!!")
-    
-    engine = pyttsx3.init()
-    voices = engine.getProperty("voices")
-    engine.setProperty('voice',voices[1].id)  #female voice 
-    engine.setProperty('rate',150)  #speed of the voice 
-     
-     
-
-    while True:
-        text = input("Enter anything:")
-        response = chain.invoke({"input":text})
-        
-        if text.lower() == "bye" :
-            print(response)
-            engine.say(response)
-            break
-        
+def speech(response):
+    "function to handle speech"
+    try:
+        engine = pyttsx3.init(driverName='sapi5')
+        voices = engine.getProperty("voices")
+        engine.setProperty('voice', voices[1].id)
+        engine.setProperty('rate', 150)
         engine.say(response)
-        print(response)
         engine.runAndWait()
+        engine.stop()
         
-        
-        
-        
+    except Exception as e :
+        print(f"speech error : {e}")
+
+
+while True:
+
+    text = input("Ask anything:")
+    response = chain.invoke({"input": text})
+    print(response)
+    speech(response)
+
+    if text.lower() == 'bye':
+        break
