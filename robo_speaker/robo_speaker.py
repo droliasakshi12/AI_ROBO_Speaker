@@ -6,7 +6,7 @@ from langchain_core.output_parsers import StrOutputParser
 import pyttsx3
 
 
-load_dotenv(dotenv_path=r"C:\Users\data\OneDrive\Desktop\study\practical world projects\python_projects\robo_speaker\api.env")
+load_dotenv(dotenv_path=r"api.env")  #add your own file path 
 
 # loading model
 llm = ChatGroq(groq_api_key=os.getenv("groq_api_key"),
@@ -45,3 +45,4 @@ while True:
 
     if text.lower() == 'bye':
         break
+
