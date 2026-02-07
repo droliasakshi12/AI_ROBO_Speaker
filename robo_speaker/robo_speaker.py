@@ -5,7 +5,7 @@ from langchain_groq import ChatGroq
 from langchain.messages import SystemMessage, HumanMessage, AIMessage
 import pyttsx3
 
-load_dotenv(dotenv_path=r"C:\Users\data\OneDrive\Desktop\study\practical world projects\python_projects\robo_speaker\api.env")
+load_dotenv(dotenv_path=r"api.env")
 
 
 @st.cache_resource
@@ -71,3 +71,4 @@ with st.sidebar:
     
     st.markdown('---')
     
+
