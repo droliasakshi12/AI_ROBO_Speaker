@@ -62,9 +62,7 @@ if prompt := st.chat_input("ask anything"):
     
     st.session_state.messages.append(AIMessage(content = response.content))
 
-
-#sidebar 
-
+#sidebar to clear chat 
 with st.sidebar:
     if st.button("Clear chat hsitory"):
         st.session_state.messages=[
@@ -73,3 +71,4 @@ with st.sidebar:
     
     st.markdown('---')
     
+
