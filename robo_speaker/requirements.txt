@@ -3,3 +3,4 @@ python-dotenv
 streamlit 
 langchain 
 langchain-groq
+comtypes
