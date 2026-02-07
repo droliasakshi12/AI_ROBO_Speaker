@@ -17,7 +17,7 @@ model = get_model()
 
 st.set_page_config(page_title='AI CHATBOT', page_icon='🤖')
 
-
+st.title("🤖 AI ROBO SPEAKER")
 def speak(speak_text):
     try:
         engine = pyttsx3.init(driverName='sapi5')
@@ -44,9 +44,7 @@ for message in st.session_state.messages[1:]:
         st.markdown(message.content)
         
      
-
 #chat input 
-
 if prompt := st.chat_input("ask anything"):
     
     with st.chat_message('user'):
@@ -66,7 +64,7 @@ if prompt := st.chat_input("ask anything"):
 #sidebar 
 
 with st.sidebar:
-    if st.button("Clear chat hsitory"):
+    if st.button("🗑️Clear chat hsitory"):
         st.session_state.messages=[
         SystemMessage(content = "you are an educated human.")]
         st.rerun()
