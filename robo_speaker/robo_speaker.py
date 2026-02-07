@@ -5,7 +5,7 @@ from langchain_groq import ChatGroq
 from langchain.messages import SystemMessage, HumanMessage, AIMessage
 import pyttsx3
 
-load_dotenv(dotenv_path=r"api.env")
+load_dotenv(dotenv_path=r"C:\Users\data\OneDrive\Desktop\study\practical world projects\python_projects\robo_speaker\api.env")
 
 
 @st.cache_resource
@@ -17,7 +17,7 @@ model = get_model()
 
 st.set_page_config(page_title='AI CHATBOT', page_icon='🤖')
 
-st.title("🤖 AI ROBO SPEAKER")
+
 def speak(speak_text):
     try:
         engine = pyttsx3.init(driverName='sapi5')
@@ -44,7 +44,9 @@ for message in st.session_state.messages[1:]:
         st.markdown(message.content)
         
      
+
 #chat input 
+
 if prompt := st.chat_input("ask anything"):
     
     with st.chat_message('user'):
@@ -64,11 +66,10 @@ if prompt := st.chat_input("ask anything"):
 #sidebar 
 
 with st.sidebar:
-    if st.button("🗑️Clear chat hsitory"):
+    if st.button("Clear chat hsitory"):
         st.session_state.messages=[
         SystemMessage(content = "you are an educated human.")]
         st.rerun()
     
     st.markdown('---')
     
-
